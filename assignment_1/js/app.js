@@ -2,11 +2,7 @@
 	.controller('LunchCheckController', LunchCheckController);
 	LunchCheckController.$inject = ['scope'];
 
-	function BindingController($scope){
-		
+	function LunchCheckController($scope){
+		$scope.entered_word = $scope.lunch;
 	}
-
-
-
-
 })();
