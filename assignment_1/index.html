@@ -19,10 +19,10 @@
              class="form-control"
              ng-model = "lunch"
              ng-model = "show_or_hide"
-             ng-keyup="displayMessages();" style = '{{style}}'>
+             style = '{{style}}'>
          </div>
          <div class="form-group">
-             <button class="btn btn-default">Check If Too Much</button>
+             <button class="btn btn-default" ng-click="displayMessages();">Check If Too Much</button>
          </div>
          <div class="form-group message">
             {{message}}
