@@ -16,7 +16,14 @@ function ToBuyController(ShoppingListCheckOffService,$scope){
 	showList.removeItem = function (itemIndex) {
     	ShoppingListCheckOffService.removeItem(itemIndex,showList.items[itemIndex].name,showList.items[itemIndex].quantity);
   	};
-  	
+  	showList.bought_or_not = function(){
+	
+		if (showList.items.length == 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	/*
 	var itemAdder = this;
 	itemAdder.itemName = '';
