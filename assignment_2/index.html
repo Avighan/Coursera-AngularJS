@@ -42,7 +42,7 @@
               </div>
               <a href="https://en.wikipedia.org/wiki/{{item.name}}">
 
-                <img class="card-img-top" ng-src="../{{item.name}}.jpg" alt="{{item.name}}">
+                <img class="card-img-top" ng-src="images/{{item.name}}.jpg" alt="{{item.name}}">
               </a>
               <input type="text" placeholder="Enter quantity" ng-model="item.quantity" ng-keyup="buy_items.update_record($index,item.name,item.quantity);">
               <button class="btn btn-default"  ng-click="buy_items.removeItem($index,item.name,item.quantity);"><span class="glyphicon glyphicon-ok"></span> 
