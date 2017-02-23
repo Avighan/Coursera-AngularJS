@@ -77,9 +77,11 @@ function NarrowItDownController(MenuSearchService,$scope){
   	};
 	
   	menu.items_found = function(){
-  		if (MenuSearchService.getItems().length==0){
+  		
+  		if (MenuSearchService.getItems().length === 0){
   			return true;
-  		}else{
+  		}
+  		else{
   			return false;
   		}
   	}
@@ -113,8 +115,7 @@ function MenuSearchService($http,ApiBasePath){
 			if(checkItems.length > 0){
 				
 				for (var i =0; i < checkItems.length;i++){
-					console.log(checkItems[i].description);
-					console.log(results);
+				
 					if(checkItems[i].description == results){
 							return true;
 					}
@@ -123,19 +124,22 @@ function MenuSearchService($http,ApiBasePath){
 		}
 		return false;
 	}
-	
+	var foundItems = [];
 	service.getMatchedMenuItems = function (searchTerm) {
-		var foundItems = [];
+		
     	var response = $http({
       		method: "GET",
       		url: (ApiBasePath + "/menu_items.json")
     	}).then(function(result){
     		
     		for (var i =0; i < result.data.menu_items.length; i++){
-    			if(check_in_word(result.data.menu_items[i].description,searchTerm) && check_repeater(foundItems,result.data.menu_items[i].description) == false && searchTerm != ''){
+    			if(check_in_word(result.data.menu_items[i].description,searchTerm) && check_repeater(foundItems,result.data.menu_items[i].description) == false  && searchTerm != ''){
     				
     				foundItems.push(result.data.menu_items[i]);	
     				
+    			}
+    			else if (searchTerm == ''){
+    				foundItems =[];
     			}
     			
     		}
@@ -153,6 +157,7 @@ function MenuSearchService($http,ApiBasePath){
     		foundItems.splice(itemIndex, 1);
   		};
   		service.getItems = function () {
+  			console.log(foundItems.length);
     		return foundItems;
   		};
 
