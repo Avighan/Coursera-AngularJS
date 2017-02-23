@@ -131,7 +131,7 @@ function MenuSearchService($http,ApiBasePath){
       		method: "GET",
       		url: (ApiBasePath + "/menu_items.json")
     	}).then(function(result){
-    		
+    		foundItems =[];
     		for (var i =0; i < result.data.menu_items.length; i++){
     			if(check_in_word(result.data.menu_items[i].description,searchTerm) && check_repeater(foundItems,result.data.menu_items[i].description) == false  && searchTerm != ''){
     				
