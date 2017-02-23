@@ -16,13 +16,13 @@ function foundItems() {
     restrict: "A",
     templateUrl: 'template.html',
     scope:{
-    	found: '<',
-    	onRemove:'&'	
+      found: '<',
+      onRemove:'&'  
     },
     controller: NarrowItDownController,
     controllerAs: 'menu',
     bindToController: true
-  	};
+    };
 
   return ddo;
 }
@@ -32,112 +32,128 @@ function foundItems() {
 
 CategoryController.$inject = ['MenuSearchService','$scope'];
 function CategoryController(MenuSearchService,$scope){
-	var category = this;
-	category.search  = function(){ 
-		
-		 var promise = MenuSearchService.getCategoryItems();
-		 promise.then(function (response) {
-      		category_found.value = response;
+  var category = this;
+  category.search  = function(){ 
+    
+     var promise = MenuSearchService.getCategoryItems();
+     promise.then(function (response) {
+          category_found.value = response;
 
-    	})
-    	.catch(function (error) {
-      		console.log(error);
-    	})
-		
-	};
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
+    
+  };
 
 }
 
 
 NarrowItDownController.$inject = ['MenuSearchService','$scope'];
 function NarrowItDownController(MenuSearchService,$scope){
-	var menu = this;
-	
-	menu.search  = function(searchTerm){ 
-		
-		 var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
-		 promise.then(function (response) {
-      	 menu.found = response;
-
-      	 
-
-    	})
-    	.catch(function (error) {
-      		console.log(error);
-    	})
-
-		
-	};
-	
-	menu.removeItem = function (itemIndex) {
-    	
-    	MenuSearchService.removeItem(itemIndex);
-    	
+  var menu = this;
+  
+  menu.search  = function(searchTerm){ 
     
-  	};
-	
-  	menu.items_found = function(){
-  		if (MenuSearchService.getItems().length==0){
-  			return true;
-  		}else{
-  			return false;
-  		}
-  	}
+     var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+     promise.then(function (response) {
+         menu.found = response;
+
+         
+
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
+
+    
+  };
+  
+  menu.removeItem = function (itemIndex) {
+      
+      MenuSearchService.removeItem(itemIndex);
+      
+    
+    };
+  
+    menu.items_found = function(){
+      if (MenuSearchService.getItems().length==0){
+        return true;
+      }else{
+        return false;
+      }
+    }
 }
 
 MenuSearchService.$inject = ['$http','ApiBasePath'];
 function MenuSearchService($http,ApiBasePath){
-	var service = this;
+  var service = this;
 
-	function check_in_word(d,searchTerm){
-		var words = searchTerm.split(" ");
-		var count = 0;
+  function check_in_word(d,searchTerm){
+    var words = searchTerm.split(" ");
+    var count = 0;
 
-		for (var i = 0; i < words.length; i++){
-			
-			
-			if (d.includes(words[i])){
-				count += 1;
-			}
-		}
-		if(count == words.length){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
-	var foundItems = [];
-	service.getMatchedMenuItems = function (searchTerm) {
-    	var response = $http({
-      		method: "GET",
-      		url: (ApiBasePath + "/menu_items.json")
-    	}).then(function(result){
-    		
-    		for (var i =0; i < result.data.menu_items.length; i++){
-    			if(check_in_word(result.data.menu_items[i].description,searchTerm)){
-    				foundItems.push(result.data.menu_items[i]);	
-    				
-    			}
-    			
-    		}
-    		return foundItems;
-    		
-    	}).catch(function (error) {
-      		console.log(error);
-    	});
-    	
-    	return response;
-  		};
+    for (var i = 0; i < words.length; i++){
+      
+      
+      if (d.includes(words[i])){
+        count += 1;
+      }
+    }
+    if(count == words.length){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  
 
-  		service.removeItem = function (itemIndex) {
-  			
-    		foundItems.splice(itemIndex, 1);
-  		};
-  		service.getItems = function () {
-    		return foundItems;
-  		};
+  function check_repeater(checkItems,results){
+      if(checkItems.length > 0){
+        
+        for (var i =0; i < checkItems.length;i++){
+          console.log(checkItems[i].description);
+          console.log(results);
+          if(checkItems[i].description == results){
+              return true;
+          }
+      
+      }
+    }
+    return false;
+  }
+  var foundItems = [];
+  service.getMatchedMenuItems = function (searchTerm) {
+      var response = $http({
+          method: "GET",
+          url: (ApiBasePath + "/menu_items.json")
+      }).then(function(result){
+        
+        for (var i =0; i < result.data.menu_items.length; i++){
+          if(check_in_word(result.data.menu_items[i].description,searchTerm) && check_repeater(foundItems,result.data.menu_items[i].description) == false){
+            
+            foundItems.push(result.data.menu_items[i]); 
+            
+          }
+          
+        }
+        return foundItems;
+        
+      }).catch(function (error) {
+          console.log(error);
+      });
+      
+      return response;
+      };
+
+      service.removeItem = function (itemIndex) {
+        
+        foundItems.splice(itemIndex, 1);
+      };
+      service.getItems = function () {
+        return foundItems;
+      };
 
 }
 
