@@ -1,0 +1,102 @@
+[
+  {
+    "short_name": "L",
+    "name": "Lunch",
+    "special_instructions": "Sunday-Friday 11:15am-3:00pm. Served with your choice of rice (Vegetable Fried RIce, Steamed Rice, Brown Rice), AND EITHER soup (Hot & Sour, Wonton, Vegetable, Egg Drop, Chicken Corn Soup) OR veggie egg roll. $1.00 extra to have both soup and egg roll."
+  },
+  {
+    "short_name": "A",
+    "name": "Soup",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "B",
+    "name": "Appetizers",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "SP",
+    "name": "Chef's Recommendations",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "C",
+    "name": "Chicken",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "F",
+    "name": "Beef",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "V",
+    "name": "Veal",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "DK",
+    "name": "Duck",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "VG",
+    "name": "Vegetables",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "CU",
+    "name": "Curry",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "NL",
+    "name": "Noodles (Lo Mein)",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "NF",
+    "name": "Mei Fan (Very Fine Noodles)",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "PF",
+    "name": "Pan Fried Noodles",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "FR",
+    "name": "Fried Rice",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "CM",
+    "name": "Chow Mein",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "FY",
+    "name": "Egg Foo Young",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "SO",
+    "name": "Side Orders",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "DS",
+    "name": "Desserts",
+    "special_instructions": ""
+  },
+  {
+    "short_name": "D",
+    "name": "Dinner Combo",
+    "special_instructions": "Served with your choice of rice (Vegetable Fried RIce, Steamed Rice, Brown Rice), AND EITHER soup (Hot & Sour, Wonton, Vegetable, Egg Drop, Chicken Corn Soup) OR veggie egg roll."
+  },
+  {
+    "short_name": "SR",
+    "name": "Sushi Menu",
+    "special_instructions": "Contains raw ingredients. Consuming raw or undercooked meat, poultry, or seafood may increase your risk of food borne illness."
+  }
+]

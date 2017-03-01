@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <div  ng-repeat="category in $ctrl.items">
+      <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+              <h4 class="panel-title pull-left" style = "border-radius: 10%; ">
+                  <a data-toggle="collapse" data-parent="#accordion" data-target ="#collapse{{category.short_name}}" href="#">{{category.name}} ({{ category.short_name}})
+                  </a>
+
+              </h4>
+             
+                
+          </div>
+          <div id="collapse{{category.short_name}}" class="panel-collapse collapse in">
+              <div class="panel-body">
+                  <div class="card text-center">
+                    <div class="card-header">
+                      {{ category.short_name}}
+                    </div>
+                    <div class="card-block">
+                       <h4 class="card-title">{{category.name}}</h4>
+                       <p class="card-text">{{category.description}}</p>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th>Large Portion Name</th>
+                              <th>Large Portion Price</th>
+                              <th>Small Portion Name</th>
+                              <th>Small Portion Price</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><img class="card-img-top" ng-src="images/menu_items_images/{{category.short_name | get_alphabet}}/{{category.short_name}}.jpg" alt="category.short_name"></td>
+                              <td><h3>{{category.large_portion_name}}</h3></td>
+                              <td><h3>{{category.price_large | currency}}</h3></td>
+                              <td><h3>{{category.small_portion_name}}</h3></td>
+                              <td><h3>{{category.price_small | currency}}</h3></td>
+                              
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--<button class="btn btn-danger"  ng-click="menu.onRemove({index: $index});">Remove</button>-->
+                    </div>
+                    <br>
+                    <div class="card-footer text-muted">
+                      <span class="glyphicon glyphicon glyphicon-cutlery"></span>      <span class="label label-warning">{{category.category_id}}</span>
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>

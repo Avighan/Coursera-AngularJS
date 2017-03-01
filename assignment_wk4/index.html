@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" ng-app="MenuApp">
+  <head>
+    <title>Welcome to our Restaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+   
+    
+    <style>
+      .jumbotron {
+        background: url(images/images/jumbotron_1200.jpg);
+        width: 100%;
+        text-shadow: black 0.3em 0.3em 0.3em;
+      }
+      .jumbotron img{
+        padding-top: 2%;
+        float: left;
+      }
+      .jumbotron h1{
+        padding-top: 5%;
+        float: right;
+      }
+      .jumbotron a{
+        cursor: pointer;
+      }
+      .thumbnail {
+        height: 547px;
+        overflow-y: hidden;
+      }
+      body{
+        
+        
+      }
+    </style>
+
+    <!-- Modules -->
+    <script src = "modulejs/menuapp.module.js"></script>
+
+    <script src = "modulejs/data.module.js"></script>
+
+
+    <!-- Artifacts -->
+    <script src = "modulejs/routes.js"></script>
+    <script src = "modulejs/categories.component.js"></script>
+    <script src = "modulejs/items.component.js"></script>
+    <script src = "modulejs/menudata.service.js"></script>
+    
+    
+    
+
+  </head>
+<body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Restaura BR.</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li  ui-sref-active="active"><a ui-sref="home">Home <span class="sr-only">(current)</span></a></li>
+          <li  ui-sref-active="active"><a ui-sref="categories">Categories</a></li>
+          <li  ui-sref-active="active"><a ui-sref="items">Items</a></li>
+        </ul>
+        <!--
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search"  >
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+        -->
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="jumbotron">
+      <div class="container">
+        <a><img src = "images/images/restaurant-logo.png" /><h1>Welcome to our Restaurant!!!</h1></a>
+        <p></p>
+      </div>    
+  </div>
+  <div class="container">
+    <ui-view></ui-view>
+  <!--
+    <div class="row">
+      <div class="col-md-6">
+        <div ng-controller="CategoryListController as category">
+          <categories-list
+            categories="category.categories"
+            ></categories-list>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div ng-controller="ItemsListController as items" style="float:right;">
+          <items-list
+            items="items.items"
+            ></items-list>
+        </div>
+      </div>
+    </div>
+  -->
+  </div>
+</body>
+</html>
