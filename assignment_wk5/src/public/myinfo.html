@@ -1,0 +1,68 @@
+<div class="container-fluid">
+	<div class="row" ng-show="myInfoCtrl.checkRegisteredUser() != 0">
+    <div class="col-md-12">
+      <h1 style="text-align: center;">Registered Information!!!</h1>
+    </div>
+		<div class="col-md-4">
+			<ul class="list-group">
+				<li class="list-group-item disabled">Your First Name is : {{myInfoCtrl.userData[0].firstname}}</li>
+				<li class="list-group-item disabled">Your Last Name is : {{myInfoCtrl.userData[0].lastname}}</li>
+				<li class="list-group-item disabled">Your Email id is : {{myInfoCtrl.userData[0].email}}</li>
+				<li class="list-group-item disabled">Your Phone Number is : {{myInfoCtrl.userData[0].phonenumber}}</li>
+			</ul>
+		</div>
+		<div class="col-md-8">
+      <div class="panel-heading">
+      <h3>Your Favourite Item: </h3>
+      </div>
+			<div class="panel-body">
+            <div class="card text-center">
+              <div class="card-header">
+                {{ myInfoCtrl.userData[0].favourites.short_name}}
+              </div>
+              <div class="card-block">
+                 <h4 class="card-title">{{myInfoCtrl.userData[0].favourites.name}}</h4>
+                 <p class="card-text">{{myInfoCtrl.userData[0].favourites.description}}</p>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Large Portion Name</th>
+                        <th>Large Portion Price</th>
+                        <th>Small Portion Name</th>
+                        <th>Small Portion Price</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img class="card-img-top" ng-src="images/menu_items_images/{{myInfoCtrl.userData[0].favourites.short_name | get_alphabet}}/{{myInfoCtrl.userData[0].favourites.short_name}}.jpg" alt="myInfoCtrl.userData[0].favourites.short_name"></td>
+                        <td><h3>{{myInfoCtrl.userData[0].favourites.large_portion_name}}</h3></td>
+                        <td><h3>{{myInfoCtrl.userData[0].favourites.price_large | currency}}</h3></td>
+                        <td><h3>{{myInfoCtrl.userData[0].favourites.small_portion_name}}</h3></td>
+                        <td><h3>{{myInfoCtrl.userData[0].favourites.price_small | currency}}</h3></td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--<button class="btn btn-danger"  ng-click="menu.onRemove({index: $index});">Remove</button>-->
+              </div>
+              <br>
+              <div class="card-footer text-muted">
+                <span class="glyphicon glyphicon glyphicon-cutlery"></span>      <span class="label label-warning">{{myInfoCtrl.userData[0].favourites.category_id}}</span>
+              </div>
+            </div>
+        </div>
+		</div>
+	</div>
+	<div ng-show="myInfoCtrl.checkRegisteredUser() == 0">
+		<div class="alert alert-warning">
+			<strong>Not Yet Signed Up</strong>
+		</div>
+		<div>
+			<a><button type="button" class="btn btn-info" ui-sref="public.signup">Sign Up</button></a>
+		</div>
+	</div>
+</div>

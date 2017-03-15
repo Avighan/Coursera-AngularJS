@@ -1,0 +1,92 @@
+<div class="container">
+	<div class="row">
+		<div ng-show="signup.checkform_submission() == false">
+			<form class="form-horizontal" name="SignUp" novalidate>
+				<fieldset>
+
+				<!-- Form Name -->
+					<legend style="color: #557c3e;font-weight:bold;">Sign Up</legend>
+
+					
+					<!-- Text input-->
+					<div class="form-group">
+					  <label class="col-md-4 control-label" for="firstname">First Name</label>
+		  				<div class="col-md-5 input-group">
+		    				<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+		    				<input type="text" class="form-control" id="firstname" name="firstname"
+		    				ng-model="signup.user.firstname" 
+		    				required
+		    				minlength="4">
+		    				<span ng-if="(SignUp.firstname.$error.minlength || SignUp.firstname.$error.required) && SignUp.firstname.$touched">First Name's minimum length should be 4!!!</span>
+		  				</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+					  <label class="col-md-4 control-label" for="lastname">Last Name</label>
+		  				<div class="col-md-5 input-group">
+		    				<span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+		    				<input type="text" class="form-control" id="lastname" name="lastname"
+		    				ng-model="signup.user.lastname" 
+		    				required
+		    				minlength="4">
+		    				<span ng-if="(SignUp.lastname.$error.minlength || SignUp.lastname.$error.required) && SignUp.lastname.$touched">Last Name's minimum length should be 4!!!</span>
+		  				</div>
+					</div>
+
+
+					<!-- Text input-->
+					<div class="form-group">
+					  <label class="col-md-4 control-label" for="emails">Email</label>
+		  				<div class="col-md-5 input-group">
+		    				<span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+		    				<input type="email" class="form-control" id="email" name="emails"
+		    				ng-model = "signup.user.emails"
+		    				required>
+		    				<span ng-if="SignUp.emails.$invalid && SignUp.emails.$touched">Must be a valid email address: abc@domain</span>
+		  				</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+		  				<label class="col-md-4 control-label" for="phonenumber">Phone Number</label>
+		  				<div class="col-md-5 input-group">
+		    				<span class="input-group-addon"><i class="fa fa-phone"aria-hidden="true"></i></span>
+		    				<input type="text" class="input-medium bfh-phone form-control" placeholder="Phone ###-###-####" name = "phonenumber"
+		    				ng-model = "signup.user.phonenumber"
+		    				pattern="(\d{3})-(\d{3})-(\d{4})">
+		    				<span ng-if="SignUp.phonenumber.$invalid && SignUp.phonenumber.$touched">Phone must be in the format ###-###-####</span>
+		  				</div>
+					</div>
+
+
+					<!-- Text input-->
+					<div class="form-group">
+		  				<label class="col-md-4 control-label" for="sel1">Your Favourite Menu Item</label>
+		  				<div class="col-md-5 input-group">
+		    				<select class="form-control" id="sel1"
+		    				ng-options  = "item.short_name for item in signup.AllMenuItems.menu_items | emptyFilter" ng-model="signup.user.item.short_name" required>
+		    				<span ng-if="(signup.user.item.short_name.$error.required) && SignUp.lastname.$touched">Select Your Favourite Items</span>
+							 </select>
+		  				</div>
+					</div>
+
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="confirmation"></label>
+						<div class="col-md-4">
+							<button id="confirmation" name="confirmation" class="btn btn-primary" ng-click="signup.setUserData(signup.user.firstname,signup.user.lastname,signup.user.emails,signup.user.phonenumber,signup.user.item.short_name)"
+							ng-disabled="SignUp.$invalid">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+		<div  ng-show="signup.checkform_submission() == true">
+			<div class="alert alert-success">
+				<strong>Your information has been saved!!!</strong>
+			</div>
+		</div>
+	</div>
+</div>
